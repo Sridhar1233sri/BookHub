@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BookHub</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1856&q=80'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px; /* Larger font size */
+            margin-bottom: 10px; /* Add some space below the heading */
+        }
+        p {
+            color: #666;
+            font-size: 18px; /* Larger font size for text */
+        }
+        .terms-checkbox {
+            margin: 20px 0;
+        }
+        .btn-next {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to BookHub</h1>
+        <p>Your One-Stop Bookstore: Buy, Sell, and Explore Books Online!</p>
+        <div class="terms-checkbox">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a></label>
+        </div>
+        <a class="btn-next" href="sign.up.html">Next</a>
+    </div>
+
+    <script>
+        // JavaScript function to check if the terms are agreed before redirecting
+        function redirectToLogin() {
+            if (!document.getElementById('agreeTerms').checked) {
+                alert('Please agree to the Terms and Conditions.');
+                return false; // Prevent the link from working if terms are not agreed
+            }
+        }
+    </script>
+</body>
+</html>
