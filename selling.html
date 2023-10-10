@@ -104,22 +104,40 @@
             reader.readAsDataURL(file);
         });
 
-        function postBook() {
-            var bookTitle = document.getElementById('bookTitle').value;
-            var bookAuthor = document.getElementById('bookAuthor').value;
-            var bookEdition = document.getElementById('bookEdition').value;
-            var bookLanguage = document.getElementById('bookLanguage').value;
-            var bookCategory = document.getElementById('bookCategory').value;
-            var bookRate = document.getElementById('bookRate').value;
-            var bookSellerContact = document.getElementById('bookSellerContact').value;
-            var bookImage = document.getElementById('previewImage').src;
+    function postBook() {
+        // Get values from form inputs
+        var bookTitle = document.getElementById("bookTitle").value;
+        var bookAuthor = document.getElementById("bookAuthor").value;
+        var bookEdition = document.getElementById("bookEdition").value;
+        var bookLanguage = document.getElementById("bookLanguage").value;
+        var bookCategory = document.getElementById("bookCategory").value;
+        var bookRate = document.getElementById("bookRate").value;
+        var bookSellerContact = document.getElementById("bookSellerContact").value;
+        // You can add more fields as needed
 
-            // Here, you can perform actions with the book details, such as sending them to a server or storing them in a database.
-            // You can also use the 'bookImage' variable to work with the captured image.
+        // Create an object to hold the book details
+        var bookDetails = {
+            "title": bookTitle,
+            "author": bookAuthor,
+            "edition": bookEdition,
+            "language": bookLanguage,
+            "category": bookCategory,
+            "rate": bookRate,
+            "contact": bookSellerContact
+        };
 
-            // For this example, we'll just display an alert.
-            var message = `Book Title: ${bookTitle}\nAuthor: ${bookAuthor}\nEdition: ${bookEdition}\nLanguage: ${bookLanguage}\nCategory: ${bookCategory}\nRate: ${bookRate}\nContact: ${bookSellerContact}`;
-            alert(message);
+        // Convert the object to JSON
+        var bookDetailsJSON = JSON.stringify(bookDetails);
+
+        // Store the JSON data in local storage
+        localStorage.setItem("bookDetails", bookDetailsJSON);
+
+        // Optionally, you can display a confirmation message or clear the form
+        alert("Book details have been stored in local storage.");
+
+        // Clear the form
+        document.getElementById("bookForm").reset();
+
         }
     </script>
 </body>

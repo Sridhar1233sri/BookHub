@@ -95,10 +95,23 @@
             const email = registrationForm.email.value;
             const location = registrationForm.location.value;
 
-            // You can process the form data here, e.g., send it to a server
+            // Create a JSON object
+            const user = {
+                name: name,
+                phone: phone,
+                email: email,
+                location: location
+            };
+
+            // Convert the object to a JSON string
+            const jsonString = JSON.stringify(user);
+
+            // Store the JSON string in Local Storage
+            localStorage.setItem('user', jsonString);
+            alert("Book details have been stored in local storage.");
 
             // For redirection, replace the URL below with the desired link
-            window.location.href = 'sign.up.html';
+            window.location.href = 'login.html';
         });
     </script>
 </body>

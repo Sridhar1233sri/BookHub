@@ -1,0 +1,160 @@
+/* Reset some default styles and apply a base font size */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+/* Style the navigation bar */
+nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 1rem;
+}
+
+/* Style the logo */
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
+/* Style the social icons */
+.social_icon {
+    font-size: 1.5rem;
+}
+
+/* Make the main section responsive */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.main h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.main p {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.main_img img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
+/* Style the services section */
+.services {
+    background-color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.services_card {
+    flex: 0 1 calc(25% - 1rem);
+    background-color: #f1f1f1;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.services_card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.services_card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.services_card p {
+    font-size: 1rem;
+}
+
+/* Style the about section */
+.about {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.about_image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about_tag {
+    flex: 1;
+    padding-left: 2rem;
+}
+
+.about h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Add responsive styles for smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .main h1 {
+        font-size: 2rem;
+    }
+
+    .main p {
+        font-size: 0.9rem;
+    }
+
+    .services_card {
+        flex: 0 1 calc(50% - 1rem);
+    }
+
+    .about {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about_image img {
+        margin-bottom: 1rem;
+    }
+}
