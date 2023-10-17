@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+        .go-to-home-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+            text-decoration: none; /* Remove the default underline for links */
+            display: none; /* Initially, the button is hidden */
+        }
+        .go-to-home-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration</h2>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name "location" required>
+            </div>
+            
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+        
+        <!-- "Go to Home" button -->
+        <a class="go-to-home-button" href="Home page.html">Go to Home</a>
+    </div>
+    <script>
+        // JavaScript for form submission
+        const registrationForm = document.getElementById('registration-form');
+        const goToHomeButton = document.querySelector('.go-to-home-button');
+
+        registrationForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Get the form data
+            const name = registrationForm.name.value;
+            const phone = registrationForm.phone.value;
+            const email = registrationForm.email.value;
+            const location = registrationForm.location.value;
+
+            // You can process the form data here, e.g., send it to a server
+
+            // For redirection, replace the URL below with the desired link
+
+            // Show the "Go to Home" button after form submission
+            goToHomeButton.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

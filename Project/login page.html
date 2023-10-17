@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .error-message {
+            color: red;
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="signin-form" action="Home page.html">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message" id="email-error">Please enter a valid email.</span><br>
+        
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required>
+            <span class="error-message" id="password-error">Incorrect password.</span><br><br>
+        
+            <button type="submit" id="signin-button" disabled>Log In</button>
+        </form>
+        
+    </div>
+    <script>
+        // JavaScript for email format validation and password validation
+        const emailField = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const passwordField = document.getElementById('password');
+        const passwordError = document.getElementById('password-error');
+        const signinButton = document.getElementById('signin-button');
+
+        emailField.addEventListener('input', function () {
+            const email = emailField.value;
+            const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            if (emailRegex.test(email)) {
+                emailError.classList.remove('show');
+                signinButton.removeAttribute('disabled');
+            } else {
+                emailError.classList.add('show');
+                signinButton.setAttribute('disabled', 'disabled');
+            }
+        });
+
+        passwordField.addEventListener('input', function () {
+            passwordError.classList.remove('show'); // Remove the error message on password input
+        });
+    </script>
+</body>
+</html>

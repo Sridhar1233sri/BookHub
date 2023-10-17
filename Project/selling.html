@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Your Book Here</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #bookImage {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Post Your Book Here</h1>
+        <form id="bookForm">
+            <label for="bookTitle">Book Title:</label>
+            <input type="text" id="bookTitle" required><br>
+            
+            <label for="bookAuthor">Book Author Name:</label>
+            <input type="text" id="bookAuthor" required><br>
+            
+            <label for="bookEdition">Book Edition:</label>
+            <input type="text" id="bookEdition" required><br>
+            
+            <label for="bookLanguage">Book Language:</label>
+            <input type="text" id="bookLanguage" required><br>
+            
+            <label for="bookCategory">Book Category:</label>
+            <select id="bookCategory">
+                <option value="Children">Children</option>
+                <option value="Adult">Adult</option>
+                <option value="Scientific">Scientific</option>
+                <option value="Engineering Books">Engineering Books</option>
+                <option value="Novels">Novels</option>
+                <option value="NCERT Books">NCERT Books</option>
+            </select><br>
+
+            <label for="bookRate">Book Rate:</label>
+            <input type="number" id="bookRate" required><br>
+            
+            <label for="bookSellerContact">Book Seller Contact Number:</label>
+            <input type="text" id="bookSellerContact" required><br>
+            
+            <label for="bookImage">Book Image:</label>
+            <br>
+            <input type="file" accept="image/*" capture="camera" id="bookImage"><br>
+
+
+            <br>
+            
+            <button type="button" onclick="postBook()">Post Book</button>
+        </form>
+        <img id="previewImage" src="#" alt="Book Preview" style="display: none;">
+    </div>
+
+    <script>
+        // Function to preview the selected book image
+        document.getElementById('bookImage').addEventListener('change', function(event) {
+            var previewImage = document.getElementById('previewImage');
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                previewImage.src = reader.result;
+                previewImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        function postBook() {
+            var bookTitle = document.getElementById('bookTitle').value;
+            var bookAuthor = document.getElementById('bookAuthor').value;
+            var bookEdition = document.getElementById('bookEdition').value;
+            var bookLanguage = document.getElementById('bookLanguage').value;
+            var bookCategory = document.getElementById('bookCategory').value;
+            var bookRate = document.getElementById('bookRate').value;
+            var bookSellerContact = document.getElementById('bookSellerContact').value;
+            var bookImage = document.getElementById('previewImage').src;
+
+            // Here, you can perform actions with the book details, such as sending them to a server or storing them in a database.
+            // You can also use the 'bookImage' variable to work with the captured image.
+
+            // For this example, we'll just display an alert.
+            var message = `Book Title: ${bookTitle}\nAuthor: ${bookAuthor}\nEdition: ${bookEdition}\nLanguage: ${bookLanguage}\nCategory: ${bookCategory}\nRate: ${bookRate}\nContact: ${bookSellerContact}`;
+            alert(message);
+        }
+    </script>
+</body>
+</html>
