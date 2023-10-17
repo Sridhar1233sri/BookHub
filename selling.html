@@ -91,36 +91,89 @@
 
     <script>
         // Function to preview the selected book image
-        document.getElementById('bookImage').addEventListener('change', function(event) {
-            var previewImage = document.getElementById('previewImage');
-            var file = event.target.files[0];
-            var reader = new FileReader();
+        // document.getElementById('bookImage').addEventListener('change', function(event) {
+        //     var previewImage = document.getElementById('previewImage');
+        //     var file = event.target.files[0];
+        //     var reader = new FileReader();
 
-            reader.onload = function() {
-                previewImage.src = reader.result;
-                previewImage.style.display = 'block';
-            };
+        //     reader.onload = function() {
+        //         previewImage.src = reader.result;
+        //         previewImage.style.display = 'block';
+        //     };
 
-            reader.readAsDataURL(file);
-        });
+        //     reader.readAsDataURL(file);
+        // });
+
+        // function postBook() {
+        //     var bookTitle = document.getElementById('bookTitle').value;
+        //     var bookAuthor = document.getElementById('bookAuthor').value;
+        //     var bookEdition = document.getElementById('bookEdition').value;
+        //     var bookLanguage = document.getElementById('bookLanguage').value;
+        //     var bookCategory = document.getElementById('bookCategory').value;
+        //     var bookRate = document.getElementById('bookRate').value;
+        //     var bookSellerContact = document.getElementById('bookSellerContact').value;
+        //     var bookImage = document.getElementById('previewImage').src;
+
+        //     // Here, you can perform actions with the book details, such as sending them to a server or storing them in a database.
+        //     // You can also use the 'bookImage' variable to work with the captured image.
+
+        //     // For this example, we'll just display an alert.
+        //     var message = `Book Title: ${bookTitle}\nAuthor: ${bookAuthor}\nEdition: ${bookEdition}\nLanguage: ${bookLanguage}\nCategory: ${bookCategory}\nRate: ${bookRate}\nContact: ${bookSellerContact}`;
+        //     alert(message);
+        // }
+
 
         function postBook() {
-            var bookTitle = document.getElementById('bookTitle').value;
-            var bookAuthor = document.getElementById('bookAuthor').value;
-            var bookEdition = document.getElementById('bookEdition').value;
-            var bookLanguage = document.getElementById('bookLanguage').value;
-            var bookCategory = document.getElementById('bookCategory').value;
-            var bookRate = document.getElementById('bookRate').value;
-            var bookSellerContact = document.getElementById('bookSellerContact').value;
-            var bookImage = document.getElementById('previewImage').src;
+            // Retrieve form data
+            const bookTitle = document.getElementById("bookTitle").value;
+            const bookAuthor = document.getElementById("bookAuthor").value;
+            const bookEdition = document.getElementById("bookEdition").value;
+            const bookLanguage = document.getElementById("bookLanguage").value;
+            const bookCategory = document.getElementById("bookCategory").value;
+            const bookRate = document.getElementById("bookRate").value;
+            const bookSellerContact = document.getElementById("bookSellerContact").value;
+            const bookImage = document.getElementById("bookImage").files[0];
 
-            // Here, you can perform actions with the book details, such as sending them to a server or storing them in a database.
-            // You can also use the 'bookImage' variable to work with the captured image.
+            // Create a FormData object to send the data as a multipart/form-data request
+            const formData = new FormData();
+            formData.append('bookTitle', bookTitle);
+            formData.append('bookAuthor', bookAuthor);
+            formData.append('bookEdition', bookEdition);
+            formData.append('bookLanguage', bookLanguage);
+            formData.append('bookCategory', bookCategory);
+            formData.append('bookRate', bookRate);
+            formData.append('bookSellerContact', bookSellerContact);
+            formData.append('bookImage', bookImage);
 
-            // For this example, we'll just display an alert.
-            var message = `Book Title: ${bookTitle}\nAuthor: ${bookAuthor}\nEdition: ${bookEdition}\nLanguage: ${bookLanguage}\nCategory: ${bookCategory}\nRate: ${bookRate}\nContact: ${bookSellerContact}`;
-            alert(message);
+            // Send the data to the API endpoint using a fetch request
+            fetch('http://127.0.0.1:5000/storebook', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.status === 201) {
+                    // The book was registered successfully
+                    return response.json();
+                } else {
+                    // Handle errors
+                    return response.json().then(data => {
+                        throw new Error(data.message);
+                    });
+                }
+            })
+            .then(data => {
+                // Handle the successful response, e.g., display a success message
+                console.log(data.message);
+            })
+            .catch(error => {
+                // Handle and display the error message
+                console.error(error.message);
+            });
         }
+
+
+
+
     </script>
 </body>
 </html>
